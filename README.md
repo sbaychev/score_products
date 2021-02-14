@@ -43,8 +43,8 @@ list of 10 Candidates. So out of the 10 Amazon API returned result based on this
 Thereupon the `score` value gets calculated by subtracting from 100 the _preliminary score_ multiplied by 10 (As our 
 base unit of extremum is 10based).
 The edge cases relate to no records returned and the exact word(s) used not found in the returned list. In these cases 
-the result is 0 ("practically never searched for");
-As the main stipulation is "Exact Word(s) Match".
+the result is 0 ("practically never searched for") as the main stipulation is "Exact Word(s) Match".
+There are also logging functionalities to see the Execution time of each Request and Returned Response from Amazon API.
 
 
 => 3b) Following the 10s SLA, each Request is implemented to be non-blocking Asynchronous. This is done both for 

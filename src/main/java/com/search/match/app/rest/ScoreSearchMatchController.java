@@ -31,11 +31,11 @@ public class ScoreSearchMatchController {
     public Callable<ResponseEntity<Void>> getScore(@RequestParam(value = "keyword") String keyword) {
 
         Timestamp now = Timestamp.valueOf(LocalDateTime.now());
-        LOG.info("Time Request Entry: {}", now);
+        LOG.info("Time Request Entry for: {}. Entered: {}", keyword, now);
 
         SearchResponse searchResponse = iScoreMatchService.scoreMatch(keyword);
 
-        LOG.info("Time Request Handled: {}s",
+        LOG.info("Time Request for: {} . Handled in: {}s", keyword,
             ((Timestamp.valueOf(LocalDateTime.now()).getTime()) - now.getTime()) / 1000);
 
         return () -> new ResponseEntity(searchResponse, HttpStatus.FOUND);
