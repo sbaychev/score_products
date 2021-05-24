@@ -94,7 +94,8 @@ The code provided is as is - Buildable and Usable
 --> Can use curl or Postman or from within any web browser
 
 returns result      - curl 'http://localhost:8080/estimate?keyword=iphone'
+curl 'http://localhost:8080/estimate?keyword=blue penguin squishmallow 16 inch'
 
-0  - no such word | searchable item  - curl 'http://localhost:8080/estimate?keyword=charger%20red%20green' 
-
+0  - no such word | searchable item  - curl 'http://localhost:8080/estimate?keyword=charger%20red%20green'
+curl 'http://localhost:8080/estimate?keyword=blue penguin squishmallow 16 inch'
 ---

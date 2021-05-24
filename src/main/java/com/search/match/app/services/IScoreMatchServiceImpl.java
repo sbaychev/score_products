@@ -42,7 +42,7 @@ public class IScoreMatchServiceImpl implements IScoreMatchService {
     @Override
     public SearchResponse scoreMatch(String searchParams) {
 
-        searchParams = normalizeSearchParams(searchParams);
+//        searchParams = normalizeSearchParams(searchParams);
 
         List<Integer> listMatches = new ArrayList<>();
 
@@ -81,7 +81,7 @@ public class IScoreMatchServiceImpl implements IScoreMatchService {
     }
 
     @Async
-    private SearchResource performAmazonSearch(String searchParams) {
+    public SearchResource performAmazonSearch(String searchParams) {
 
         Object[] response = amazonSearchClient.findCurrentTopSearchResults(searchParams);
         List<String> listOfMatches = objectMapper.convertValue(response[1], ArrayList.class);
@@ -89,10 +89,10 @@ public class IScoreMatchServiceImpl implements IScoreMatchService {
         return new SearchResource(new Search(String.valueOf(response[0]), listOfMatches));
     }
 
-    private String normalizeSearchParams(String searchParams) {
-
-        // the API call truncates any leading spaces and trims to single space any lagging such
-        // sample https://completion.amazon.com/search/complete?search-alias=aps&client=amazon-search-ui&mkt=1&q=%20%20%20charger%20red%20%20%20%
-        return RIGHT_SIDE_TRIM.matcher(LEFT_SIDE_TRIM.matcher(searchParams).replaceAll("")).replaceAll(" ");
-    }
+//    private String normalizeSearchParams(String searchParams) {
+//
+//        // the API call truncates any leading spaces and trims to single space any lagging such
+//        // sample https://completion.amazon.com/search/complete?search-alias=aps&client=amazon-search-ui&mkt=1&q=%20%20%20charger%20red%20%20%20%
+//        return RIGHT_SIDE_TRIM.matcher(LEFT_SIDE_TRIM.matcher(searchParams).replaceAll("")).replaceAll(" ");
+//    }
 }
